@@ -1,2 +1,3 @@
-# junit-practice
-JUnit practice
+# junit-sandbox
+
+A JUnit practice sandbox
