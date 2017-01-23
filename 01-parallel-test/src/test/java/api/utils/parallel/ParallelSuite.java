@@ -24,8 +24,8 @@ import api.utils.annotation.Parallel;
 // base: http://stackoverflow.com/questions/5674774/running-junit-test-in-parallel-on-suite-level
 
 public class ParallelSuite extends Suite {
-	public ParallelSuite(final Class<?> klass) throws InitializationError {
-			super(klass, new AllDefaultPossibilitiesBuilder(true) {
+	public ParallelSuite(final Class<?> clazz) throws InitializationError {
+			super(clazz, new AllDefaultPossibilitiesBuilder(true) {
 				@Override
 				public Runner runnerForClass(Class<?> testClass) throws Throwable {
 					List<RunnerBuilder> builders = Arrays.asList(
@@ -61,10 +61,10 @@ public class ParallelSuite extends Suite {
 			
 			setScheduler(new RunnerScheduler() {
 				ExecutorService executorService = Executors.newFixedThreadPool(
-						klass.isAnnotationPresent(Parallel.class) ?
-								klass.getAnnotation(Parallel.class).threads() :
+						clazz.isAnnotationPresent(Parallel.class) ?
+								clazz.getAnnotation(Parallel.class).threads() :
 								(int) (Runtime.getRuntime().availableProcessors() * 1.5),
-						new NamedThreadFactory(klass.getSimpleName()));
+						new NamedThreadFactory(clazz.getSimpleName()));
 				CompletionService<Void> completionService = new ExecutorCompletionService<Void>(executorService);
 				Queue<Future<Void>> tasks = new LinkedList<Future<Void>>();
 				

@@ -19,14 +19,15 @@ import api.utils.annotation.Parallel;
 // base: https://github.com/lshift/diffa/blob/master/kernel/src/test/java/net/lshift/diffa/kernel/util/ConcurrentJunitRunner.java
 
 public class ParallelJunitRunner extends BlockJUnit4ClassRunner {
-	public ParallelJunitRunner(final Class<?> klass) throws InitializationError {
-		super(klass);
+	public ParallelJunitRunner(final Class<?> clazz) throws InitializationError {
+		super(clazz);
+		
 		setScheduler(new RunnerScheduler() {
 			ExecutorService executorService = Executors.newFixedThreadPool(
-					klass.isAnnotationPresent(Parallel.class) ?
-							klass.getAnnotation(Parallel.class).threads() :
+					clazz.isAnnotationPresent(Parallel.class) ?
+							clazz.getAnnotation(Parallel.class).threads() :
 							(int) (Runtime.getRuntime().availableProcessors() * 1.5),
-					new NamedThreadFactory(klass.getSimpleName()));
+					new NamedThreadFactory(clazz.getSimpleName()));
 			CompletionService<Void> completionService = new ExecutorCompletionService<Void>(executorService);
 			Queue<Future<Void>> tasks = new LinkedList<Future<Void>>();
 			
