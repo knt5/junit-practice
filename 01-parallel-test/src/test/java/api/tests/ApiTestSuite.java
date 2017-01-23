@@ -3,16 +3,16 @@ package api.tests;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 import api.tests.products.ProductsSuggestTest;
 import api.tests.products.ProductsTest;
 import api.tests.tags.TagsTest;
 import api.utils.AuthUtil;
+import api.utils.ParallelSuite;
 import api.utils.SessionId;
 
-@RunWith(Suite.class)
+@RunWith(ParallelSuite.class)
 @SuiteClasses({
 	// products
 	ProductsSuggestTest.class,
