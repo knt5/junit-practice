@@ -1,4 +1,4 @@
-package api.utils;
+package api.utils.parallel;
 
 import java.util.Arrays;
 import java.util.LinkedList;

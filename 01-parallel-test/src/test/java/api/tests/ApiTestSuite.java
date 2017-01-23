@@ -9,8 +9,8 @@ import api.tests.products.ProductsSuggestTest;
 import api.tests.products.ProductsTest;
 import api.tests.tags.TagsTest;
 import api.utils.AuthUtil;
-import api.utils.ParallelSuite;
 import api.utils.SessionId;
+import api.utils.parallel.ParallelSuite;
 
 @RunWith(ParallelSuite.class)
 @SuiteClasses({
