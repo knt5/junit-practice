@@ -1,4 +1,4 @@
-package api.tests;
+package api;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
